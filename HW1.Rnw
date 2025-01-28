@@ -42,7 +42,6 @@
 \textbf{Solution:}
 % Note here I have removed eval=FALSE so this code will run
 <<size="scriptsize", warning=FALSE, message=FALSE>>=
-install.packages("aRtsy")
 library("aRtsy")
 @
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -167,27 +166,61 @@ package for \texttt{R} \citep{artsy}.
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Create a numeric vector containing the integers from 0 to 10 inclusive. Hint -- the solution to this problem is one of these values.\\
 \textbf{Solution:}
+
+% Numeric vector from 0 to 10
+<<eval=TRUE, size="scriptsize", warning=FALSE, message=FALSE>>=
+num.vec <- 0:10
+num.vec
+@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % QUESTION 2b
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Complete the algebra to compute $2^{x+1} +2^{x-1}$ for each value in the numerical vector created in step 1. Make sure to save the result to a new numeric vector.\\
 \textbf{Solution:}
+% Compute the expression for each value in num.vec
+
+<<eval=TRUE, size="scriptsize", warning=FALSE, message=FALSE>>=
+results <- 2^(num.vec+1)+2^(num.vec-1)
+results
+@
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % QUESTION 2c
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Use the which() function to ask which result is 40.\\
 \textbf{Solution:}
+
+% Use which to find which the index where the results are 40
+<<eval=TRUE, size="scriptsize", warning=FALSE, message=FALSE>>=
+index.of.result.40 <- which(results==40)
+index.of.result.40
+
+@
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % QUESTION 2d
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item What is the solution? That is, what value of x yields $2^{x+1} +2^{x-1} = 40$?\\
 \textbf{Solution:}
+
+<<eval=TRUE, size="scriptsize", warning=FALSE, message=FALSE>>=
+solution <- num.vec[index.of.result.40]
+solution
+
+@
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % QUESTION 2e
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item Explain why this approach wouldn't work for something like $3^{x+2} + 5 (3^x) = 84$ where the solution is $x \approx 1.6309$.\\
 \textbf{Solution:}
+
+This approach only works when the solution is an integer because we are evaluating the equation for a strict set of integer values within the num.vec vector. For this example, this method would not find an exact solution since it does not evaluate any non-integer x values.
+
+
 \end{enumerate}
 \end{enumerate}
+
+\bibliography{bibliography.bib}
 
 \end{document}
